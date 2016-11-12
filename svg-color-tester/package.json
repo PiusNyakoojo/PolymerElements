@@ -1,0 +1,24 @@
+{
+  "name": "svg-color-tester",
+  "version": "1.0.0",
+  "description": "Mix and match different colors to determine the right mix for your svg logo",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "polymer serve & npm run watch",
+    "test": "polymer test",
+    "watch": "browser-sync start --proxy localhost:8080/components/svg-color-tester/ --files '!node_modules, !bower_components, !package.json, !bower.json, *.html' "
+  },
+  "keywords": [
+    "svg",
+    "color",
+    "logo"
+  ],
+  "author": "Pius Nyakoojo",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.5"
+  }
+}

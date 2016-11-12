@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
+
+
+<!--
+`svg-color-tester`
+Mix and match different colors to determine the right mix for your svg logo
+
+@demo demo/index.html
+-->
+
+<dom-module id="svg-color-tester">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --bgcolor: white;
+      }
+
+      #container {
+        background-color: var(--bgcolor);
+      }
+    </style>
+    <paper-card header="Color Selection">
+      <div class="card-content">
+        <paper-input label="Svg Color" value="{{svgColor}}"></paper-input>
+        <paper-input label="Background Color" value="{{bgColor}}"></paper-input>
+        <paper-button raised on-tap="setColors">Set Colors</paper-button>
+
+      </div>
+    </paper-card>
+    <br>
+    <paper-card id="container">
+      <div class="card-content">
+        <content id="content"></content>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'svg-color-tester',
+
+      properties: {
+        svgColor: {
+          type: String,
+          value: 'FF0000',
+        },
+        bgColor: {
+          type: String,
+          value: '00FF00'
+        }
+      },
+
+
+
+      setColors: function() {
+        this.setSvgColor();
+        this.setBGColor();
+      },
+
+      setSvgColor: function() {
+        this.getContentChildren('#content')[0].querySelector('#Page-1').querySelector('#Artboard').style.fill = this.svgColor;
+      },
+
+      setBGColor: function() {
+        this.customStyle['--bgcolor'] = "#" + this.bgColor;
+        Polymer.updateStyles();
+      }
+
+    });
+  </script>
+</dom-module>
